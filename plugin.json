@@ -1,0 +1,10 @@
+[{ "author" : "Andr3as",
+    "version": "0.1.0",
+    "name" : "CSSLint",
+    "url" : "https://github.com/Andr3as/Codiad-CSSLint",
+    "config": [{
+        "file": "dialog.php",
+        "icon": "icon-gauge",
+        "title": "CSSLint"
+    }]
+}]
