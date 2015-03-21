@@ -20,9 +20,7 @@
     codiad.CSSLint = {
 
         path:     curpath,
-        result:   false,
         config:   [],
-        globals:  [],
         worker:   null,
 
         init: function() {
@@ -99,7 +97,7 @@
         },
 
         lint: function() {
-            var options = this.__getOptions();
+            var options = this.getOptions();
             var code    = codiad.editor.getContent();
             this.worker.postMessage({code: code, options: options});
         },
@@ -113,7 +111,6 @@
             } else {
                 $('.csslint-indicator').html('<span class="icon-attention"></span>');
             }
-            console.log(data);
             var errors = [];
             var warnings = [];
             for (var i = 0; i < data.messages.length; i++) {
@@ -167,6 +164,14 @@
             codiad.editor.getActive().clearSelection();
             codiad.editor.getActive().focus();
         },
+        
+        getOptions: function() {
+            var options = this.__getOptions();
+            $.each(this.config, function(i, item){
+                options[i] = item;
+            });
+            return options;
+        },
 
         getProject: function() {
             return $('#project-root').attr('data-path');
@@ -194,7 +199,6 @@
         
         __applyGlobalSettings: function() {
             var options = this.__getOptions();
-            options = JSON.parse(options);
             $('.settings-csslint .csslint-option').each(function(i, item){
                 var name = $(item).attr('name');
                 if (!(options[name] || false)) {

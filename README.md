@@ -2,6 +2,8 @@
 
 Validate your CSS code with CSSLint.
 
+- Supports .csslintrc files
+
 ##Installation
 
 - Download the zip file and unzip it to your plugin folder.
@@ -17,7 +19,7 @@ Validate your CSS code with CSSLint.
 
 ##Example
 
-
+![Example](http://andrano.de/Plugins/img/csslint.jpg "Example")
 
 ##Credit
 
