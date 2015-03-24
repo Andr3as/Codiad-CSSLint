@@ -64,8 +64,7 @@
                         }
                     });
                 } else {
-                    $('.csslint').hide();
-                    $('.csslint-panel').hide();
+                    _this.hide();
                 }
             });
             amplify.subscribe('active.onSave', function(path){
@@ -77,12 +76,10 @@
                 }
             });
             amplify.subscribe('active.onClose', function(path){
-                $('.csslint').hide();
-                $('.csslint-panel').hide();
+                _this.hide();
             });
             amplify.subscribe('active.onRemoveAll', function(){
-                $('.csslint').hide();
-                $('.csslint-panel').hide();
+                _this.hide();
             });
             amplify.subscribe('settings.dialog.tab_loaded', function(name){
                 if (name == "CSSLint") {
@@ -150,6 +147,13 @@
                 $('#root-editor-wrapper').height(height + 150);
             }
             codiad.editor.resize();
+        },
+
+        hide: function() {
+            $('.csslint').hide();
+            if ($('.csslint-panel').is(':visible')) {
+                this.togglePanel();
+            }
         },
 
         createLine: function(line, col, msg) {
